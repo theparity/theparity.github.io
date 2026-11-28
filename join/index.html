@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Parity · The exchange rate of AI</title>
+<meta name="description" content="AI news, live model rates and the best deal per euro, in one place. Join the waitlist and be first in.">
+<meta property="og:title" content="Parity · The exchange rate of AI is loading">
+<meta property="og:description" content="AI news, live model rates and the best deal per euro. Join the waitlist.">
+<meta property="og:image" content="https://theparity.github.io/assets/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0F1012">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: one calm landing screen. Hourglass + promise + email first; then what you get (real numbers), roadmap, FAQ. Phone first: most visitors come from Instagram. */
+:root{--s0:#0F1012;--s1:#16181B;--s2:#1E2125;--s3:#2A2E33;--t1:#ECEAE6;--t2:#A3A7AD;--t3:#80858C;--up:#5DD6C4;--down:#F2594B;--brass:#E2A43B;--ink:#141210;
+  --display:"Familjen Grotesk","Helvetica Neue",Arial,sans-serif;--body:"Inter",system-ui,-apple-system,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html{background:var(--s0)}
+body{margin:0;background:var(--s0);color:var(--t1);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:6px}
+/* top */
+header{display:flex;align-items:center;justify-content:space-between;padding-block:20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo b{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.03em}
+.tag{font-size:12px;color:var(--t3);border:1px solid var(--s3);border-radius:999px;padding:5px 12px}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding-block:40px 64px;position:relative}
+.hero::before{content:"";position:absolute;right:-10%;top:-20%;width:70%;height:120%;background:radial-gradient(closest-side,rgba(226,164,59,.14),transparent);pointer-events:none}
+.hero h1{font-size:clamp(40px,6.4vw,76px);line-height:1;font-weight:700;margin-top:18px}
+.hero h1 em{font-style:normal;color:var(--brass)}
+.lede{color:var(--t2);font-size:18px;margin-top:20px;max-width:46ch}
+form{margin-top:30px;display:flex;flex-direction:column;gap:12px;max-width:500px}
+.row{display:flex;gap:10px;background:var(--s1);border:1px solid var(--s3);border-radius:16px;padding:6px;transition:border-color .2s}
+.row:focus-within{border-color:var(--brass)}
+.row input{flex:1;min-width:0;background:none;border:0;color:var(--t1);font:inherit;font-size:16px;padding:12px 12px;outline:none}
+.row input::placeholder{color:var(--t3)}
+.btn{background:var(--brass);color:var(--ink);border:0;border-radius:12px;padding:12px 20px;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(1.07)}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.6;cursor:default}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--t3);line-height:1.45}
+.consent input{margin-top:2px;accent-color:var(--brass);width:16px;height:16px;flex:none}
+.msg{min-height:20px;font-size:14px}
+.msg.err{color:var(--down)}
+.done{display:none;margin-top:30px;max-width:500px;background:var(--s1);border:1px solid var(--s3);border-radius:18px;padding:22px}
+.done.on{display:block}
+.done h3{font-size:24px}
+.done p{color:var(--t2);margin-top:6px}
+.share{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+.ghost{background:var(--s2);border:1px solid var(--s3);color:var(--t1);border-radius:10px;padding:10px 14px;font:inherit;font-size:14px;cursor:pointer}
+/* hourglass */
+.glass{width:100%;max-width:400px;justify-self:center;position:relative}
+.glass svg{width:100%;height:auto;display:block;overflow:visible}
+.progress{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.bar{height:8px;border-radius:4px;background:var(--s2);overflow:hidden}
+.bar i{display:block;height:100%;width:62%;background:linear-gradient(90deg,var(--brass),#F0C677);border-radius:4px}
+@media (prefers-reduced-motion:no-preference){.bar i{animation:load 2.4s ease-out both}}
+@keyframes load{from{width:8%}}
+.progress span{display:flex;justify-content:space-between;font-size:12px;color:var(--t3)}
+@media (prefers-reduced-motion:no-preference){
+  .grain{animation:fall 1.6s linear infinite}
+  .flip{animation:flip 14s cubic-bezier(.6,0,.4,1) infinite;transform-origin:200px 260px}
+}
+@keyframes fall{from{transform:translateY(-30px);opacity:0}15%{opacity:1}85%{opacity:1}to{transform:translateY(150px);opacity:0}}
+@keyframes flip{0%,92%{transform:rotate(0)}100%{transform:rotate(180deg)}}
+/* ticker */
+.tape{border-block:1px solid var(--s3);overflow:hidden;white-space:nowrap;padding-block:12px;position:relative}
+.tape::before,.tape::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:1}
+.tape::before{left:0;background:linear-gradient(90deg,var(--s0),transparent)}.tape::after{right:0;background:linear-gradient(-90deg,var(--s0),transparent)}
+.track{display:inline-flex;gap:34px;padding-left:34px}
+@media (prefers-reduced-motion:no-preference){.track{animation:tape 70s linear infinite}}
+@keyframes tape{to{transform:translateX(-50%)}}
+.tk{display:inline-flex;gap:8px;align-items:baseline;font-size:13px;color:var(--t2)}
+.tk b{font-family:var(--mono);color:var(--t1)}
+.tk small{font-size:10px;letter-spacing:.1em;color:var(--t3)}
+/* sections */
+section{padding-block:72px}
+.sh{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.sh h2{font-size:clamp(28px,4vw,40px);line-height:1.05}
+.sh p{color:var(--t2);max-width:60ch}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--s1);border:1px solid var(--s3);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card h3{font-size:21px}
+.card p{color:var(--t2);font-size:15px}
+.peek{margin-top:auto;background:var(--s2);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--t2);display:flex;flex-direction:column;gap:4px}
+.peek b{color:var(--t1);font-family:var(--mono);font-weight:600}
+.peek .up{color:var(--up);font-family:var(--mono)}
+.road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--s3);border-radius:18px;overflow:hidden}
+.step{padding:22px;border-right:1px solid var(--s3);display:flex;flex-direction:column;gap:6px}
+.step:last-child{border-right:0}
+.step .when{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.step.now .when{color:var(--brass)}
+.step h3{font-size:19px}
+.step p{color:var(--t2);font-size:14px}
+.faq details{border-top:1px solid var(--s3);padding-block:16px}
+.faq details:last-child{border-bottom:1px solid var(--s3)}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:"+";font-family:var(--mono);color:var(--brass)}
+.faq details[open] summary::after{content:"−"}
+.faq p{color:var(--t2);margin-top:8px;max-width:70ch}
+.cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
+.cta h2{font-size:clamp(30px,5vw,48px)}
+footer{border-top:1px solid var(--s3);padding-block:28px;font-size:13px;color:var(--t3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.member{font-size:13px;color:var(--t3)}
+.member a{color:var(--t2)}
+@media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:24px;padding-block:8px 40px}
+  .glass{order:-1;max-width:220px}
+  .cards,.road{grid-template-columns:minmax(0,1fr)}
+  .step{border-right:0;border-bottom:1px solid var(--s3)}.step:last-child{border-bottom:0}
+  section{padding-block:52px}
+  .row{flex-direction:column;padding:8px}.row .btn{width:100%;padding:14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="./" aria-label="Parity">
+      <svg width="30" height="30" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" fill="#E2A43B"/><rect x="7" y="9.5" width="14" height="3" rx="1.5" fill="#141210"/><rect x="7" y="15.5" width="14" height="3" rx="1.5" fill="#141210"/></svg>
+      <b>Parity</b>
+    </a>
+    <span class="tag">Opening soon</span>
+  </header>
+
+  <div class="hero">
+    <div>
+      <span class="eyebrow">The exchange rate of AI</span>
+      <h1>Know what a euro buys in <em>AI</em>.</h1>
+      <p class="lede">Daily AI news, live rates for every video, image, voice and music model, and the best deal for your job. In one place, built to become the AI exchange.</p>
+      <form id="wl" novalidate>
+        <div class="row">
+          <label for="email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Your email</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+          <button class="btn" id="go" type="submit">Join the waitlist</button>
+        </div>
+        <label class="consent"><input type="checkbox" id="ok" required> <span>Email me once when Parity opens. We store only your email for that, and you can ask us to delete it at any time.</span></label>
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      </form>
+      <div class="done" id="done" role="status">
+        <h3>You're on the list.</h3>
+        <p>We'll email you the day Parity opens. Until then, the news and rates are on Instagram.</p>
+        <div class="share"><button class="ghost" type="button" id="copy">Copy link to share</button></div>
+      </div>
+    </div>
+    <div class="glass" aria-hidden="true">
+      <svg viewBox="0 0 400 520">
+        <defs><clipPath id="g"><path d="M82 70 C82 170 194 214 194 260 C194 306 82 350 82 450 L318 450 C318 350 206 306 206 260 C206 214 318 170 318 70Z"/></clipPath>
+          <radialGradient id="h" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#E2A43B" stop-opacity=".25"/><stop offset="1" stop-color="#E2A43B" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="200" cy="260" r="210" fill="url(#h)"/>
+        <g class="flip">
+          <path d="M82 70 C82 170 194 214 194 260 C194 306 82 350 82 450 L318 450 C318 350 206 306 206 260 C206 214 318 170 318 70Z" fill="rgba(236,234,230,.04)"/>
+          <g clip-path="url(#g)">
+            <rect x="60" y="150" width="280" height="120" fill="#E2A43B" opacity=".9"/>
+            <path d="M70 450 L70 440 C140 420 170 372 200 366 C230 372 260 420 330 440 L330 450Z" fill="#E2A43B" opacity=".9"/>
+          </g>
+          <g clip-path="url(#g)"><circle class="grain" cx="200" cy="270" r="3" fill="#E2A43B"/><circle class="grain" cx="200" cy="270" r="3" fill="#E2A43B" style="animation-delay:.4s"/><circle class="grain" cx="200" cy="270" r="3" fill="#E2A43B" style="animation-delay:.8s"/><circle class="grain" cx="200" cy="270" r="3" fill="#E2A43B" style="animation-delay:1.2s"/></g>
+          <path d="M82 70 C82 170 194 214 194 260 C194 306 82 350 82 450" fill="none" stroke="#E2A43B" stroke-width="5" stroke-linecap="round"/>
+          <path d="M318 70 C318 170 206 214 206 260 C206 306 318 350 318 450" fill="none" stroke="#E2A43B" stroke-width="5" stroke-linecap="round"/>
+          <rect x="52" y="40" width="296" height="34" rx="17" fill="#E2A43B"/>
+          <rect x="52" y="446" width="296" height="34" rx="17" fill="#E2A43B"/>
+        </g>
+      </svg>
+      <div class="progress"><div class="bar"><i></i></div><span><b class="mono" style="color:var(--t1)">62%</b><span>Loading the exchange rate of AI</span></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tape" aria-label="Today's rates"><div class="track" id="tape"></div></div>
+
+<div class="wrap">
+  <section>
+    <div class="sh"><span class="eyebrow">What you get</span><h2>Follow AI like a market</h2><p>Every number on Parity comes from a source you can check: the platforms' own price lists, blind-vote quality rankings and the providers' status pages.</p></div>
+    <div class="cards">
+      <div class="card"><span class="eyebrow">Rates</span><h3>What a euro buys, live</h3><p>One rate per model and platform: quality × speed ÷ price. Video, image, voice and music.</p><div class="peek" id="peekRate"></div></div>
+      <div class="card"><span class="eyebrow">Price gaps</span><h3>Same model, other price</h3><p>The same model often costs several times more on another platform. Parity shows where it's cheapest.</p><div class="peek" id="peekGap"></div></div>
+      <div class="card"><span class="eyebrow">News</span><h3>AI news, without the noise</h3><p>The labs, the news desks and Hacker News, grouped by story so you read it once.</p><div class="peek" id="peekNews"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><span class="eyebrow">Where it's going</span><h2>From news feed to AI exchange</h2></div>
+    <div class="road">
+      <div class="step now"><span class="when">Now</span><h3>News and rates on Instagram</h3><p>The daily brief, the rate of the day and the biggest price gaps.</p></div>
+      <div class="step"><span class="when">Soon</span><h3>The board opens</h3><p>Live rates, charts and the best stack for your job, on the web and as an iPhone app.</p></div>
+      <div class="step"><span class="when">Next</span><h3>The AI exchange</h3><p>Buy AI at the best rate across platforms, from one place.</p></div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="sh"><span class="eyebrow">Questions</span><h2>Good to know</h2></div>
+    <details><summary>When does Parity open?</summary><p>Soon. Everyone on the waitlist hears it first, by email, on the day it opens.</p></details>
+    <details><summary>What do you do with my email?</summary><p>We use it for one thing: telling you Parity is open. We don't share it or sell it. Ask us to delete it at any time and we will.</p></details>
+    <details><summary>Where do the numbers come from?</summary><p>Prices from each platform's own price list, quality from public blind-vote leaderboards, and live status from the providers' status pages. Every price links to its source on the board.</p></details>
+    <details><summary>Is Parity tied to an AI company?</summary><p>No. Parity compares platforms; it doesn't sell any one of them.</p></details>
+  </section>
+
+  <section class="cta">
+    <span class="eyebrow">Early access</span>
+    <h2>Be first in.</h2>
+    <a class="btn" href="#wl" style="text-decoration:none" id="up">Join the waitlist</a>
+    <p class="member">Already have an access code? <a href="/">Open the board</a> · <a href="/app/">iPhone app</a></p>
+  </section>
+
+  <footer><span>© 2026 Parity · The exchange rate of AI</span><span>Prices are list prices on the date shown; nothing here is financial advice.</span></footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+const DATA = {"tape": [{"cat": "Video", "model": "MiniMax H3", "platform": "Higgsfield", "rate": 316, "eur": 0.419}, {"cat": "Video", "model": "Wan 3.0", "platform": "Replicate", "rate": 226, "eur": 0.637}, {"cat": "Video", "model": "Veo 3.1 Lite", "platform": "Google Vertex AI", "rate": 173, "eur": 0.228}, {"cat": "Video", "model": "Kling 3.0", "platform": "Higgsfield", "rate": 169, "eur": 0.314}, {"cat": "Video", "model": "MiniMax H3 Max", "platform": "fal.ai", "rate": 166, "eur": 0.728}, {"cat": "Image", "model": "Muse Image", "platform": "fal.ai", "rate": 931, "eur": 0.0091}, {"cat": "Image", "model": "Grok Imagine Image 2.0", "platform": "xAI API", "rate": 295, "eur": 0.0364}, {"cat": "Image", "model": "Seedream 5.5", "platform": "BytePlus ModelArk", "rate": 278, "eur": 0.0319}, {"cat": "Image", "model": "MAI-Image-2.7 Flash", "platform": "fal.ai", "rate": 273, "eur": 0.0373}, {"cat": "Image", "model": "Nano Banana 2.1", "platform": "Google Gemini API", "rate": 246, "eur": 0.0459}, {"cat": "Voice", "model": "Gemini 3.8 Flash-Lite TTS", "platform": "Google Gemini API", "rate": 824, "eur": 0.0083}, {"cat": "Voice", "model": "Gemini 3.8 Flash TTS", "platform": "Google Gemini API", "rate": 623, "eur": 0.0124}, {"cat": "Voice", "model": "Realtime TTS-2", "platform": "Replicate", "rate": 314, "eur": 0.0228}, {"cat": "Voice", "model": "Eleven v4 Turbo", "platform": "ElevenLabs API", "rate": 296, "eur": 0.0364}, {"cat": "Voice", "model": "xAI TTS", "platform": "fal.ai", "rate": 279, "eur": 0.0137}, {"cat": "Music", "model": "Suno v6", "platform": "Suno (Pro plan)", "rate": 1261, "eur": 0.0182}, {"cat": "Music", "model": "Mureka V9", "platform": "fal.ai", "rate": 351, "eur": 0.041}, {"cat": "Music", "model": "Stable Audio 3 Medium", "platform": "fal.ai", "rate": 286, "eur": 0.0342}, {"cat": "Music", "model": "Lyria 3.5", "platform": "Google Gemini API", "rate": 184, "eur": 0.0728}, {"cat": "Music", "model": "Lyria 3 Pro", "platform": "Google Gemini API", "rate": 181, "eur": 0.0728}], "best": {"model": "Wan 3.0", "platform": "Replicate", "rate": 226, "eur": 0.637}, "gap": {"model": "Kling 3.0", "lo": 0.314, "lo_p": "Higgsfield", "hi": 1.019, "hi_p": "Replicate", "x": 3.2}, "news": {"title": "Devnagri AI Launches Blackbird ASR for Multilingual Voice Apps", "source": "CIOL", "count": 16}, "seen": "2026-11-18", "waitlist": {"action": "https://docs.google.com/forms/d/e/1FAIpQLSdcMEy1UtvOaBCG-ZHSE2nVVTWuH1EVQv2NkNOv5ukoXMW5Ow/formResponse", "field": "entry.354332821"}};
+const $ = id => document.getElementById(id);
+const eur = v => v >= 0.1 ? "€" + v.toFixed(2) : "€" + v.toFixed(3);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// real numbers from the board build
+const one = DATA.tape.map(r => `<span class="tk"><small>${esc(r.cat)}</small>${esc(r.model)} · ${esc(r.platform)} <b>${r.rate}</b> <span class="mono">${eur(r.eur)}</span></span>`).join("");
+$("tape").innerHTML = one + one;
+const b = DATA.best, g = DATA.gap, n = DATA.news;
+$("peekRate").innerHTML = `<span>Today's best video rate</span><span>${esc(b.model)} on ${esc(b.platform)} · <b>${b.rate}</b></span><span>${eur(b.eur)} per 5 s clip · ${esc(DATA.seen)}</span>`;
+$("peekGap").innerHTML = g ? `<span>${esc(g.model)}, same clip</span><span><b>${eur(g.lo)}</b> on ${esc(g.lo_p)} → <b>${eur(g.hi)}</b> on ${esc(g.hi_p)}</span><span class="up">${g.x}× difference</span>` : "";
+$("peekNews").innerHTML = n ? `<span>Top story now</span><span style="color:var(--t1)">${esc(n.title)}</span><span>${esc(n.source)}${n.count > 1 ? ` · ${n.count} sources` : ""}</span>` : "";
+
+// waitlist
+const CFG = DATA.waitlist;
+const form = $("wl"), msg = $("msg"), go = $("go");
+const valid = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+try { if (localStorage.getItem("parity-wl")) { form.style.display = "none"; $("done").classList.add("on"); } } catch(e){}
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const email = $("email").value.trim();
+  msg.className = "msg"; msg.textContent = "";
+  if (!valid(email)){ msg.className = "msg err"; msg.textContent = "That email doesn't look right. Check it and try again."; $("email").focus(); return; }
+  if (!$("ok").checked){ msg.className = "msg err"; msg.textContent = "Tick the box so we may email you when Parity opens."; return; }
+  go.disabled = true; go.textContent = "Joining…";
+  try {
+    const body = new URLSearchParams(); body.append(CFG.field, email);  // Google Forms takes url-encoded fields
+    await fetch(CFG.action, {method: "POST", mode: "no-cors", body});
+    try { localStorage.setItem("parity-wl", "1"); } catch(e){}
+    form.style.display = "none"; $("done").classList.add("on");
+  } catch(err){
+    go.disabled = false; go.textContent = "Join the waitlist";
+    msg.className = "msg err"; msg.textContent = "We couldn't reach the server. Check your connection and try again.";
+  }
+});
+$("copy").addEventListener("click", async () => {
+  const url = location.href.split("#")[0];
+  try { await navigator.clipboard.writeText(url); $("copy").textContent = "Link copied"; }
+  catch(e){ $("copy").textContent = url; }
+});
+$("up").addEventListener("click", e => { e.preventDefault(); window.scrollTo({top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); setTimeout(() => $("email").focus(), 400); });
+})();
+</script>
+</body>
+</html>
